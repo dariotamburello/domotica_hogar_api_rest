@@ -1,4 +1,5 @@
 import { ParameterModel } from '../models/parameter.js'
+import { ModelPoolServiceConfig } from '../models/poolServiceConfiguration.js'
 
 export class ParameterController {
   static async getAll (req, res) {
@@ -32,5 +33,10 @@ export class ParameterController {
     const resultUpdate = await ParameterModel.update({ id, input })
     if (resultUpdate) return res.json(resultUpdate)
     return res.status(404).json({ message: 'Not found' })
+  }
+
+  static async getPoolServiceConfiguration (rea, res) {
+    const configuration = await ModelPoolServiceConfig.getConfig()
+    res.json(configuration)
   }
 }
