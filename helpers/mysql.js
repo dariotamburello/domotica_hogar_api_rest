@@ -7,5 +7,8 @@ export const conn = mysql.createPool({
   port: DBPORT,
   user: DBUSER,
   password: DBPASS,
-  database: DBNAME
+  database: DBNAME,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
 })

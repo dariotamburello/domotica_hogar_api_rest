@@ -10,7 +10,7 @@ export class ParameterModel {
       }
       return result[0]
     } catch (error) {
-      console.log(error)
+      console.error('Database query error:', error.message)
     }
   }
 
@@ -19,7 +19,7 @@ export class ParameterModel {
       const result = await conn.query('SELECT * FROM parameters WHERE id = ?', id)
       return result[0]
     } catch (error) {
-      console.log(error)
+      console.error('Database query error:', error.message)
     }
   }
 
@@ -35,7 +35,7 @@ export class ParameterModel {
         [id, name, value, description])
       return input
     } catch (error) {
-      console.log(error)
+      console.error('Database query error:', error.message)
     }
   }
 
@@ -46,7 +46,7 @@ export class ParameterModel {
       await conn.query('DELETE FROM parameters WHERE id = ?', id)
       return true
     } catch (error) {
-      console.log(error)
+      console.error('Database query error:', error.message)
     }
   }
 
@@ -65,7 +65,7 @@ export class ParameterModel {
       if (result[0]) return newParameter
       return false
     } catch (error) {
-      console.log(error)
+      console.error('Database query error:', error.message)
     }
   }
 }
